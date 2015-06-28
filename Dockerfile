@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y \
     haskell-platform \
     libghc-pandoc-dev \
     nodejs \
-    pandoc \
     qpdf \
     texlive-fonts-recommended \
     texlive-latex-base \
@@ -18,4 +17,4 @@ RUN cabal update && cabal install pandoc-1.14.0.4
 
 # example command: docker run danielak/pandoc --version
 WORKDIR /src
-RUN which pandoc
+ENTRYPOINT ["/root/.cabal/bin/pandoc"]
