@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
     texlive-xetex
     
 # install pandoc
-RUN cabal update && cabal install pandoc-1.13.1
+RUN cabal update && cabal install pandoc-1.14.0.4
 
 # example command: docker run danielak/pandoc --version
 WORKDIR /src
