@@ -18,4 +18,4 @@ RUN cabal update && cabal install pandoc-1.14.0.4
 
 # example command: docker run danielak/pandoc --version
 WORKDIR /src
-ENTRYPOINT ["/.cabal/bin/pandoc"]
+RUN which pandoc
