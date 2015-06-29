@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     
 # install pandoc
 RUN cabal update && cabal install pandoc-1.14.0.4
+ENV PATH /root/.cabal/bin:$PATH
 
 # example command: docker run danielak/pandoc --version
 WORKDIR /src
-ENTRYPOINT ["/root/.cabal/bin/pandoc"]
