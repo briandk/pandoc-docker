@@ -8,6 +8,7 @@ RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf;
 RUN apt-get update && apt-get install -y \
     haskell-platform \
     libghc-pandoc-dev \
+    lmodern \
     nodejs \
     qpdf \
     texlive-fonts-recommended \
@@ -15,10 +16,11 @@ RUN apt-get update && apt-get install -y \
     texlive-latex-extra \
     texlive-latex-recommended \
     texlive-luatex \
-    texlive-xetex
+    texlive-xetex \
+    wget
     
 # install pandoc
-RUN cabal update && cabal install pandoc-1.14.0.4
+RUN cabal update && cabal install pandoc-1.14.1
 ENV PATH /root/.cabal/bin:$PATH
 
 # example command: docker run danielak/pandoc --version
