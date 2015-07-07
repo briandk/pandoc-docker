@@ -6,6 +6,7 @@ RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf;
 
 # install Haskell, LaTeX, and Node
 RUN apt-get update && apt-get install -y \
+    ca-certificates \
     haskell-platform \
     libghc-pandoc-dev \
     lmodern \
@@ -18,7 +19,7 @@ RUN apt-get update && apt-get install -y \
     texlive-luatex \
     texlive-xetex \
     wget
-    
+
 # install pandoc
 RUN cabal update && cabal install pandoc
 ENV PATH /root/.cabal/bin:$PATH
