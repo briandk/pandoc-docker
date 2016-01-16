@@ -1,28 +1,9 @@
-FROM ubuntu:trusty-20150612
+FROM danielak/ubuntu-trusty
 
-# Don't install recommended or suggested packages during apt-get installs
-RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf;
-RUN echo 'APT::Install-Suggests "0";' >> /etc/apt/apt.conf;
-
-# install Haskell, LaTeX, and Node
-RUN apt-get update && apt-get install -y \
-    ca-certificates \
-    haskell-platform \
-    libghc-pandoc-dev \
-    lmodern \
-    nodejs \
-    qpdf \
-    texlive-fonts-recommended \
-    texlive-latex-base \
-    texlive-latex-extra \
-    texlive-latex-recommended \
-    texlive-luatex \
-    texlive-xetex \
-    wget
-
-# install pandoc
+# Install Pandoc
 RUN cabal update && cabal install pandoc
-ENV PATH /root/.cabal/bin:$PATH
+RUN cabal update && cabal install pandoc-citeproc
 
-# example command: docker run danielak/pandoc --version
-WORKDIR /src
+# Link Pandoc Binaries
+RUN ln -s /root/.cabal/bin/pandoc /usr/local/bin/pandoc
+RUN ln -s /root/.cabal/bin/pandoc-citeproc /usr/local/bin/pandoc-citeproc
