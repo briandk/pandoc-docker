@@ -1,4 +1,4 @@
-FROM danielak/ubuntu-trusty
+FROM danielak/latex-trusty:latest
 
 # Install Pandoc
 RUN cabal update && cabal install pandoc
